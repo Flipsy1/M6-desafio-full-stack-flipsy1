@@ -7,7 +7,13 @@ import { compare } from "bcryptjs";
 import { ILogin } from "../../interfaces/login.interfaces";
 import "dotenv/config";
 
-const createLoginService = async (loginData: ILogin): Promise<string> => {
+interface IloginReturn {
+  token: string;
+  id: string;
+  name: string;
+}
+
+const createLoginService = async (loginData: ILogin): Promise<IloginReturn> => {
   const userRepository: Repository<User> = AppDataSource.getRepository(User);
 
   const user: User | null = await userRepository.findOneBy({
@@ -29,7 +35,11 @@ const createLoginService = async (loginData: ILogin): Promise<string> => {
     expiresIn: "24h",
   });
 
-  return token;
+  const { id, name } = user;
+
+  const retu = { token, id, name };
+
+  return retu;
 };
 
 export default createLoginService;

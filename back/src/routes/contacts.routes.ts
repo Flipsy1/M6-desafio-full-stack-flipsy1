@@ -41,6 +41,7 @@ contactsRoutes.patch(
   tokenIsValidmiddleware,
   contactExistsMiddleware,
   dataIsValidMiddleware(updateContactSchema),
+  contactEmailAndPhoneUniqueMiddleware,
   updateContactController
 );
 
