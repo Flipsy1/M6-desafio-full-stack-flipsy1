@@ -41,6 +41,12 @@ Execute as migrations com o comando:
 yarn typeorm migration:run -d src/data-source.ts
 ```
 
+### Rodando o projeto em ambiente de desenvolvimento
+
+```shell
+yarn dev
+```
+
 ## Documentação da API
 
 ### endpoints
